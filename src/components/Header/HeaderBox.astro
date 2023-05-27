@@ -1,0 +1,21 @@
+---
+---
+
+<div class="header-box"><slot /></div>
+
+<style lang="scss">
+  .header-box {
+    flex: 1;
+
+    @media (max-width: 991px) {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 56px;
+      border-top: 1px solid var(--header-line);
+      background: var(--header-bg);
+      padding: 15px;
+      width: 100%;
+    }
+  }
+</style>

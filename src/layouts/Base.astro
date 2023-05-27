@@ -1,0 +1,42 @@
+---
+import Header from '@components/Header/index.astro';
+import Footer from '@components/Footer/index.astro';
+const { title } = Astro.props;
+---
+
+<script>
+  import { getTheme, setThemeColor } from '@helpers/theme';
+  const root = document.documentElement;
+  const theme = getTheme();
+
+  const isLight = theme === 'light';
+  setThemeColor(isLight);
+
+  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+  darkModeMediaQuery.addEventListener('change', (e) => {
+    const isLight = e.matches;
+    setThemeColor(isLight);
+  });
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

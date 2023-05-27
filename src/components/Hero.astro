@@ -1,0 +1,43 @@
+---
+import Wrapper from '@components/Wrapper.astro';
+---
+
+<section class="hero">
+  <Wrapper class="hero__wrapper">
+    <div class="left">
+      <h1 class="heading">Обучитесь чтению <span class="highlight">Корана</span> за 14 дней</h1>
+      <div class="text">
+        Программа обучения написана таким образом, чтобы вы могли обучиться полноценному чтению за
+        14 уроков
+      </div>
+    </div>
+    <div class="right">
+      <img src="/images/hero.png" width="520" height="470" alt="" />
+    </div>
+  </Wrapper>
+</section>
+
+<style lang="scss">
+  .hero {
+    margin-top: 100px;
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .heading {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .highlight {
+    color: var(--theme-text-primary);
+  }
+
+  .text {
+    margin-top: 24px;
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+import Navigation from '@components/Header/Navigation.astro';
+import Wrapper from '@components/Wrapper.astro';
+import Logo from '@components/Header/Logo.astro';
+import ThemeSwitch from '@components/Header/ThemeSwitch.astro';
+import BurgerMenu from '@components/Header/BurgerMenu.astro';
+import HeaderBox from '@components/Header/HeaderBox.astro';
+---
+
+<script>
+  const header = document.querySelector('.header')!;
+  const TOGGLE_CLASS = 'is-sticky';
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 150) {
+      header.classList.add(TOGGLE_CLASS);
+    } else {
+      header.classList.remove(TOGGLE_CLASS);
+    }
+  });
+</script>
+
+<style lang="scss" is:global>
+  .header {
+    padding: 40px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    &.show {
+      .header-box {
+        display: block;
+      }
+    }
+
+    &.is-sticky {
+      position: fixed;
+      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+      animation: slideDown 0.35s ease-out;
+      padding: 20px 0;
+      background: var(--header-bg);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  .header-wrapper {
+    display: flex;
+    align-items: center;
+  }
+</style>
+<header class="header">
+  <Wrapper class="header-wrapper">
+    <BurgerMenu class="home-burger" />
+    <Logo />
+    <HeaderBox>
+      <Navigation />
+    </HeaderBox>
+    <ThemeSwitch class="home-switcher" />
+  </Wrapper>
+</header>

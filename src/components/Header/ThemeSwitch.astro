@@ -1,0 +1,137 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class:list={['switcher', { [className]: className }]}>
+  <input type="checkbox" id="switch" /><label for="switch">Сменить тему</label>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    aria-hidden="true"
+    class="switcher__icon switcher__light"
+    ><path
+      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+      fill-rule="evenodd"
+      clip-rule="evenodd"></path></svg
+  >
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    aria-hidden="true"
+    class="switcher__icon switcher__dark"
+    ><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg
+  >
+</div>
+
+<script>
+  import { getTheme, setThemeColor } from '@helpers/theme';
+  const checkbox = document.querySelector('.switcher input[type="checkbox"]')! as HTMLInputElement;
+
+  const currentTheme = getTheme();
+  const isDarkTheme = currentTheme === 'dark';
+  checkbox.checked = isDarkTheme;
+
+  checkbox.addEventListener('change', () => {
+    const theme = getTheme();
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setThemeColor(false);
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      setThemeColor(true);
+    }
+  });
+
+  const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+  darkModeMediaQuery.addEventListener('change', (e) => {
+    const isLight = e.matches;
+    if (isLight) {
+      checkbox.checked = false;
+    } else {
+      checkbox.checked = true;
+    }
+  });
+</script>
+
+<style lang="scss">
+  .switcher {
+    position: relative;
+    color: #fff;
+
+    &.home-switcher {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @media (max-width: 991px) {
+        right: 80px;
+      }
+    }
+
+    &__icon {
+      position: absolute;
+      top: 0;
+      top: 3px;
+      pointer-events: none;
+    }
+
+    &__light {
+      left: 3px;
+    }
+
+    &__dark {
+      right: 3px;
+    }
+  }
+
+  input[type='checkbox'] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 48px;
+    height: 26px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    user-select: none;
+  }
+
+  label:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+  }
+
+  input:checked + label {
+    background: var(--theme-text-primary);
+  }
+
+  input:checked + label:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+
+  label:active:after {
+    width: 28px;
+  }
+</style>

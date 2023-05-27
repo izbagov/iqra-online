@@ -1,0 +1,27 @@
+:root {
+  --font-fallback: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji;
+  --font-body: 'Montserrat', var(--font-fallback);
+  --font-heading: 'Montserrat', sans-serif;
+  --theme-text-primary: #31aaee;
+}
+
+:root {
+  color-scheme: light;
+  --theme-text: #2d3134;
+  --theme-nav: #2e476b;
+  --theme-bg: #f3f4fe;
+  --theme-highlight-text: var(--theme-text-primary);
+  --header-bg: #fff;
+  --header-line: #ddd;
+}
+
+:root.theme-dark {
+  color-scheme: dark;
+  --theme-text: #fff;
+  --theme-nav: #fff;
+  --theme-bg: #282828;
+  --theme-highlight-text: var(--theme-text-primary);
+  --header-bg: #383838;
+  --header-line: #4c4c4c;
+}

@@ -1,0 +1,49 @@
+---
+import { removeTrailingSlash } from '@helpers/url';
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = removeTrailingSlash(pathname);
+
+const nav = [
+  {
+    label: 'Уроки',
+    url: '/lessons',
+  },
+  {
+    label: 'Вопросы',
+    url: '/qa',
+  },
+  {
+    label: 'Контакты',
+    url: '/contacts',
+  },
+];
+---
+
+<nav class="main-nav">
+  {
+    nav.map(({ url, label }) => (
+      <a href={url} aria-current={url === currentPath ? 'page' : 'false'} class="main-nav__item">
+        {label}
+      </a>
+    ))
+  }
+</nav>
+
+<style lang="scss">
+  .main-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    a {
+      color: var(--theme-nav);
+      text-decoration: none;
+      margin: 0 45px;
+
+      &[aria-current='page'] {
+        color: var(--theme-highlight-text);
+        font-weight: 500;
+      }
+    }
+  }
+</style>

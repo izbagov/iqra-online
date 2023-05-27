@@ -1,0 +1,194 @@
+---
+const { class: className } = Astro.props;
+---
+
+<script>
+  const $burgerBtn = document.querySelector('.burger')!;
+  const $header = document.querySelector('.header')!;
+
+  $burgerBtn.addEventListener('click', (evt) => {
+    const target = evt.currentTarget as Element;
+    if (target.classList.contains('active')) {
+      target.classList.remove('active');
+      $header.classList.remove('show');
+    } else {
+      target.classList.add('active');
+      $header.classList.add('show');
+    }
+  });
+</script>
+
+<div class:list={['burger', { [className]: className }]}>
+  <span></span>
+</div>
+
+<style lang="scss">
+  $sass-burger-add-vendor-prefixes: true !default;
+
+  // Burger
+  @mixin burger(
+    $width: 30px,
+    $height: 5px,
+    $gutter: 3px,
+    $color: #000,
+    $border-radius: 0,
+    $transition-duration: 0.3s
+  ) {
+    $burger-height: $height;
+    $burger-gutter: $gutter;
+
+    position: relative;
+    margin-top: $height + $gutter;
+    margin-bottom: $height + $gutter;
+
+    @if $sass-burger-add-vendor-prefixes {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    user-select: none;
+
+    &,
+    &::before,
+    &::after {
+      display: block;
+      width: $width;
+      height: $height;
+      background-color: $color;
+      outline: 1px solid transparent;
+      @if $border-radius != 0 {
+        border-radius: $border-radius;
+      }
+
+      @if $sass-burger-add-vendor-prefixes {
+        -webkit-transition-property: background-color, -webkit-transform;
+        -moz-transition-property: background-color, -moz-transform;
+        -o-transition-property: background-color, -o-transform;
+      }
+      transition-property: background-color, transform;
+
+      @if $sass-burger-add-vendor-prefixes {
+        -webkit-transition-duration: $transition-duration;
+        -moz-transition-duration: $transition-duration;
+        -o-transition-duration: $transition-duration;
+      }
+      transition-duration: $transition-duration;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+    }
+
+    &::before {
+      top: -($height + $gutter);
+    }
+
+    &::after {
+      top: $height + $gutter;
+    }
+  }
+
+  @mixin burger-parts {
+    &,
+    &::before,
+    &::after {
+      @content;
+    }
+  }
+
+  @mixin burger-top {
+    &::before {
+      @content;
+    }
+  }
+
+  @mixin burger-middle {
+    & {
+      @content;
+    }
+  }
+
+  @mixin burger-bottom {
+    &::after {
+      @content;
+    }
+  }
+
+  // Burger animations
+  @mixin burger-to-cross($color: auto) {
+    $burger-height: 2px;
+    $burger-gutter: 6px;
+    & {
+      background-color: transparent;
+    }
+    @if ($color != auto) {
+      &::before,
+      &::after {
+        background-color: $color;
+      }
+    }
+    &::before {
+      @if $sass-burger-add-vendor-prefixes {
+        -webkit-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        -moz-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        -ms-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        -o-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+      }
+      transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+    }
+    &::after {
+      @if $sass-burger-add-vendor-prefixes {
+        -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        -moz-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        -ms-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        -o-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+      }
+      transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+    }
+  }
+
+  .burger {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    z-index: 10;
+    user-select: none;
+    display: none;
+
+    @media (max-width: 991px) {
+      display: block;
+    }
+
+    &.home-burger {
+      position: absolute;
+      top: -5px;
+      right: 20px;
+    }
+
+    span {
+      @include burger(32px, 2px, 6px, var(--theme-text));
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -15px;
+      margin-top: -1.5px;
+    }
+
+    &.active {
+      span {
+        @include burger-to-cross;
+
+        &:before,
+        &:after {
+          background-color: var(--theme-text);
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+</style>

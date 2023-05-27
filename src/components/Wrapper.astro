@@ -1,0 +1,19 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class:list={['wrapper', { [className]: className }]}><slot /></div>
+
+<style lang="scss">
+  .wrapper {
+    width: 1120px;
+    margin: 0 auto;
+    position: relative;
+
+    @media (max-width: 1120px) {
+      width: auto;
+      margin: 0;
+      padding: 0 20px;
+    }
+  }
+</style>
