@@ -6,7 +6,6 @@ const { title } = Astro.props;
 
 <script>
   import { getTheme, setThemeColor } from '@helpers/theme';
-  const root = document.documentElement;
   const theme = getTheme();
 
   const isLight = theme === 'light';

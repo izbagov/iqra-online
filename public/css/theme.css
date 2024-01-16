@@ -16,7 +16,7 @@
   --header-line: #ddd;
 }
 
-:root.theme-dark {
+:root.dark {
   color-scheme: dark;
   --theme-text: #fff;
   --theme-nav: #fff;

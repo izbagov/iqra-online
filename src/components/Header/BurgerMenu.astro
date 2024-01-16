@@ -61,9 +61,15 @@ const { class: className } = Astro.props;
       }
 
       @if $sass-burger-add-vendor-prefixes {
-        -webkit-transition-property: background-color, -webkit-transform;
-        -moz-transition-property: background-color, -moz-transform;
-        -o-transition-property: background-color, -o-transform;
+        -webkit-transition-property:
+          background-color,
+          -webkit-transform;
+        -moz-transition-property:
+          background-color,
+          -moz-transform;
+        -o-transition-property:
+          background-color,
+          -o-transform;
       }
       transition-property: background-color, transform;
 
@@ -165,6 +171,10 @@ const { class: className } = Astro.props;
       position: absolute;
       top: -5px;
       right: 20px;
+
+      @media (max-width: 768px) {
+        right: 0;
+      }
     }
 
     span {

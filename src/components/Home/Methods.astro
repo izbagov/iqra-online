@@ -1,0 +1,165 @@
+---
+import MethodItem from './MethodItem.astro';
+import { Icon } from 'astro-icon';
+import 'node_modules/tiny-slider/dist/tiny-slider.css';
+---
+
+<div class="bg-sky-500 mt-12 md:mt-28 lg:mt-32">
+  <div class="container mx-auto pt-8 sm:pt-20 px-6 sm:px-0">
+    <div class="flex items-center mb-0 sm:mb-8">
+      <h2 class="flex-1 font-bold text-xl sm:text-4xl text-white">Методика обучения</h2>
+      <ul class="controls flex justify-end gap-0 sm:gap-4" id="customize-controls">
+        <li class="prev text-white cursor-pointer">
+          <Icon name="tabler:arrow-narrow-left" class="w-10" />
+        </li>
+        <li class="next text-white cursor-pointer">
+          <Icon name="tabler:arrow-narrow-right" class="w-10" />
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container mx-auto pb-10 sm:pb-24 px-6 sm:px-0">
+    <div class="relative">
+      <div class="our-method">
+        <div>
+          <MethodItem
+            number="1"
+            title="Учите в среднем по 7 букв во всех формах"
+            text={[
+              'Так легче и лучше запоминаются буквы алфавита, и вы быстрее научитесь читать.',
+              '7 букв это оптимальное количество, не мало и не много, так вы увидите разницу и не будете путать.',
+            ]}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="2"
+            title="Не учите весь алфавит"
+            text={[
+              'Вы запомните только название, а не буквы, или же плохо запомните только отдельную форму',
+              'Когда Вы сразу учите буквы во всех формах так они лучше запоминаются.',
+            ]}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="3"
+            title="Занимайтесь по 20-30 минут"
+            text={['с учителем и столько же самостоятельно, укладывайтесь в этот промежуток.']}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="4"
+            title="Не читайте все примеры к уроку"
+            text={['иначе утомитесь быстро, достаточно 5-6 примеров.']}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="5"
+            title="Не бойтесь"
+            text={['Вы научитесь читать, несмотря на возраст, память и национальность. Проверено!']}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="6"
+            title="Стабильность - залог успеха"
+            text={['Занимайтесь каждый день по одному уроку.']}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="7"
+            title="Практика и только практика"
+            text={[
+              'Читайте даже несмотря на то, что по-началу будете путаться, запинаться и не будете читать быстро. Главное лекарство от всего - практика.',
+            ]}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="8"
+            title="Не зубрите правила"
+            text={[
+              'главное понять базу и сразу перейти к чтению примеров, так получится быстрее освоить материал и запомнить',
+            ]}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="9"
+            title="Проходить по 2-3 темы за урок это не много"
+            text={['В школе мы изучаем куда больше :)']}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="10"
+            title="Не учите названия"
+            text={['название правил (Идгам, Икляб и т.д.) важно понять суть']}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="11"
+            title="Мединское издание"
+            text={[
+              'Многие книги по таджвиду написаны для Корана Казанского издания.',
+              'Читать вы будете по Корану Мединского издания, поэтому многие учащиеся обучаются месяцами.',
+            ]}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="12"
+            title="Сложные правила"
+            text={[
+              'По данной методике Вам не придется учить слова исключения для буквы «нун» с «сукуном» и для «долгих гласных»',
+              'Не придется учить «Солнечные и Лунные буквы», учить буквы для идгама (мутаджанис, мутакариб, мутамасиль), учить многие буквы для правила «нун» с «сукуном» и «танвина», заучивать правила «мадда». Эти правила Самые Сложные',
+            ]}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="13"
+            title="Книга будет  полезна и для тех, кто уже умеет читать Коран"
+            text={['ss']}
+          />
+        </div>
+        <div>
+          <MethodItem
+            number="14"
+            title="Вам не понадобится Коран с правилами таджвида (с цветными буквами)"
+            text={['Тем более привыкнув к Нему вы не сможете читать Коран без подсказок']}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { tns } from 'tiny-slider';
+  tns({
+    container: '.our-method',
+    items: 1,
+    autoplay: false,
+    controlsContainer: '#customize-controls',
+    autoplayButtonOutput: false,
+    autoHeight: true,
+    responsive: {
+      640: {
+        items: 2,
+        gutter: 2,
+        autoplay: true,
+        autoHeight: false,
+      },
+      1100: {
+        items: 3,
+        gutter: 30,
+      },
+    },
+  });
+</script>

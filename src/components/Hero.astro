@@ -1,43 +1,25 @@
 ---
-import Wrapper from '@components/Wrapper.astro';
+import { Image } from 'astro:assets';
+import heroImage from '@assets/images/hero.png';
 ---
 
-<section class="hero">
-  <Wrapper class="hero__wrapper">
-    <div class="left">
-      <h1 class="heading">Обучитесь чтению <span class="highlight">Корана</span> за 14 дней</h1>
-      <div class="text">
-        Программа обучения написана таким образом, чтобы вы могли обучиться полноценному чтению за
-        14 уроков
+<section
+  class="md:h-128 pt-20 pb-10 md:pt-0 md:pb-0 px-5 sm:px-0 md:0 flex md:items-center bg-white dark:bg-neutral-800"
+>
+  <div class="flex flex-col md:items-center container mx-auto md:flex-row">
+    <div class="flex-1">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl max-w-md md:max-w-none md:text-5xl lg:text-7xl font-bold mb-4 md:mb-8">
+          Обучитесь чтению <span class="text-sky-400">Корана</span> за 14 дней
+        </h1>
+        <div class="text-base md:text-xl max-w-xl">
+          Программа обучения написана таким образом, чтобы вы могли обучиться полноценному чтению за
+          14 уроков
+        </div>
       </div>
     </div>
-    <div class="right">
-      <img src="/images/hero.png" width="520" height="470" alt="" />
+    <div class="right -order-1">
+      <Image src={heroImage} width="520" class="max-w-sm md:max-w-full" height="470" alt="" />
     </div>
-  </Wrapper>
+  </div>
 </section>
-
-<style lang="scss">
-  .hero {
-    margin-top: 100px;
-
-    &__wrapper {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .heading {
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-
-  .highlight {
-    color: var(--theme-text-primary);
-  }
-
-  .text {
-    margin-top: 24px;
-  }
-</style>

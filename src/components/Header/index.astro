@@ -23,13 +23,6 @@ import HeaderBox from '@components/Header/HeaderBox.astro';
 
 <style lang="scss" is:global>
   .header {
-    padding: 40px 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-
     &.show {
       .header-box {
         display: block;
@@ -53,18 +46,14 @@ import HeaderBox from '@components/Header/HeaderBox.astro';
       transform: translateY(0);
     }
   }
-  .header-wrapper {
-    display: flex;
-    align-items: center;
-  }
 </style>
-<header class="header">
-  <Wrapper class="header-wrapper">
+<header class="header absolute left-0 top-0 px-5 py-10 w-full z-50 sm:px-0">
+  <div class="flex items-center container mx-auto relative">
     <BurgerMenu class="home-burger" />
     <Logo />
     <HeaderBox>
       <Navigation />
     </HeaderBox>
     <ThemeSwitch class="home-switcher" />
-  </Wrapper>
+  </div>
 </header>

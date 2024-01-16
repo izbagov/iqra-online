@@ -5,7 +5,9 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@helpers/*": ["src/helpers/*"]
-    }
+      "@helpers/*": ["src/helpers/*"],
+      "@assets/*": ["src/assets/*"]
+    },
+    "strictNullChecks": true
   }
 }

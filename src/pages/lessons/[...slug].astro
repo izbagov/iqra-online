@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import MarkdownLessonLayout from '@layouts/Lesson.astro';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons');
+  return lessons.map((lesson) => ({
+    params: { slug: lesson.slug },
+    props: lesson,
+  }));
+}
+type Props = CollectionEntry<'lessons'>;
+
+const lesson = Astro.props;
+const { Content } = await lesson.render();
+---
+
+<MarkdownLessonLayout {...lesson.data}>
+  <Content />
+</MarkdownLessonLayout>

@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+const allLessons = await getCollection('lessons');
+---
+
+<div class="container mx-auto mt-28">
+  <h2 class="text-4xl font-bold mb-14 text-center">Список уроков</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div>01</div>
+    <div>02</div>
+    <div>03</div>
+    <div>04</div>
+    <div>05</div>
+    <div>06</div>
+    <div>07</div>
+    <div>08</div>
+    <div>09</div>
+  </div>
+  {
+    allLessons.map((lesson) => (
+      <div class="w-80">
+        <img src={`${lesson.data.thumbnail}`} class="" />
+        <h3 class="font-bold">{lesson.data.title}</h3>
+      </div>
+    ))
+  }
+</div>
