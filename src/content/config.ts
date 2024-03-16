@@ -5,6 +5,7 @@ const lessonsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     thumbnail: z.string(),
+    description: z.string(),
   }),
 });
 
