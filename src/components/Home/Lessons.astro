@@ -8,11 +8,11 @@ const allLessons = await getCollection('lessons');
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-10 px-5 sm:px-0">
     {
       allLessons.map(({ data }) => (
-        <div class="bg-white rounded-2xl">
+        <div class="bg-white dark:bg-neutral-600 rounded-2xl">
           <img src={`${data.thumbnail}`} class="rounded-t-lg" />
           <div class="py-5 px-6">
-            <h3 class="font-bold text-xl mb-1">{data.title}</h3>
-            <p class="text-gray-500">{data.description}</p>
+            <h3 class="font-bold text-x mb-1">{data.title}</h3>
+            <p class="text-gray-500 dark:text-neutral-400">{data.description}</p>
           </div>
         </div>
       ))
