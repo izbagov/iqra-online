@@ -1,6 +1,6 @@
 ---
 import MethodItem from './MethodItem.astro';
-import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 import 'node_modules/tiny-slider/dist/tiny-slider.css';
 ---
 
@@ -10,10 +10,10 @@ import 'node_modules/tiny-slider/dist/tiny-slider.css';
       <h2 class="flex-1 font-bold text-xl sm:text-4xl text-white">Методика обучения</h2>
       <ul class="controls flex justify-end gap-0 sm:gap-4" id="customize-controls">
         <li class="prev text-white cursor-pointer">
-          <Icon name="tabler:arrow-narrow-left" class="w-10" />
+          <Icon name="tabler:arrow-narrow-left" class="w-10 h-10" />
         </li>
         <li class="next text-white cursor-pointer">
-          <Icon name="tabler:arrow-narrow-right" class="w-10" />
+          <Icon name="tabler:arrow-narrow-right" class="w-10 h-10" />
         </li>
       </ul>
     </div>

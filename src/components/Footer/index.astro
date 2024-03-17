@@ -1,6 +1,30 @@
 ---
+import Logo from '@components/Header/Logo.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
-<footer class="footer">
-  <h3>Footer</h3>
+<footer class="bg-white py-12 mt-20">
+  <div class="container mx-auto px-5 sm:px-0">
+    <Logo />
+    <div class="flex gap-3 mt-8">
+      <a
+        href="#"
+        class="flex items-center justify-center w-9 h-9 rounded-full text-gray-700 hover:text-sky-500 transition-all border border-gray-700 hover:border-sky-500"
+      >
+        <Icon name="tabler:brand-telegram" class="w-5 h-5" />
+      </a>
+      <a
+        href="#"
+        class="flex items-center justify-center w-9 h-9 rounded-full text-gray-700 hover:text-sky-500 transition-all border border-gray-700 hover:border-sky-500"
+      >
+        <Icon name="tabler:brand-youtube" class="w-5 h-5" />
+      </a>
+      <a
+        href="#"
+        class="flex items-center justify-center w-9 h-9 rounded-full text-gray-700 hover:text-sky-500 transition-all border border-gray-700 hover:border-sky-500"
+      >
+        <Icon name="tabler:brand-instagram" class="w-5 h-5" />
+      </a>
+    </div>
+  </div>
 </footer>
